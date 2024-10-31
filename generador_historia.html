@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Historias Interactivas</title>
+    <style>
+        body {
+            front-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de Historias Interactivas</h1>
+
+    <div>
+        <h2>Agregar nuevo elemento</h2>
+        <label for="nuevo-personaje">Nuevo personaje: </label>
+        <input type="text" id="nuevo-personaje">
+
+        <label for="nuevo-lugar">Nuevo lugar: </label>
+        <input type="text" id="nuevo-lugar">
+
+        <label for="nueva-accion">Nueva Accion: </label>
+        <input type="text" id="nueva-accion">
+
+        <button onclick="Agregarelementos()" >Agregar a las listas</button>
+    </div>
+
+
+    <button onclick="Generarhistoria()" >Generar Histora Aleatoria</button>
+
+
+    <div>
+        <h2>Historia Generada:</h2>
+        <p id="historia"></p>
+    </div>
+
+
+    <script>
+        let personajes = ["Carla", "Sebastian","Luis"];
+        let lugares = ["El cine", "La playa", "Una cafeteria"];
+        let acciones = ["Viendo peliculas mientras come crispetas","Caminando por la arena","Tomando cafecito y comiendo pastel"];
+
+        function Agregarelementos() {
+
+            const nuevoPersonaje = document.getElementById(nuevo-personaje).value;
+            const nuevoLugar = document.getElementById(nuevo-lugar).value;
+            const nuevaAccion = document.getElementById(nueva-accion).value;
+
+            if (nuevoPersonaje){
+                personajes.push(nuevoPersonaje);
+                document.getElementById("nuevo-personaje").value = "";
+            }
+
+            if (nuevoLugar){
+                lugares.push(nuevoLugar);
+                document.getElementById("nuevo-lugar").value = "";
+            }
+
+            if (nuevaAccion) {
+                acciones.push(nuevaAccion);
+                document.getElementById("nueva-accion").value = "";
+            }
+
+            alert ("Nuevos elementos agregados");
+
+        }
+
+        function Generarhistoria () {
+
+            const personajeAleatorio = personajes [Math.floor(Math.random() * personajes.length)];
+            const lugarAleatorio = lugares [Math.floor(Math.random() * lugares.length)];
+            const accionAleatoria = acciones [Math.floor(Math.random() * acciones.length)];
+
+
+            const historia = `${personajeAleatorio} está ${accionAleatoria} en ${lugarAleatorio}.`;
+
+            document.getElementById("historia").innerText = historia;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
